@@ -1,28 +1,191 @@
 <!DOCTYPE.html>
 <html>
   <head>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rel="shortcut icon" href="favicon.ico" />
-  <meta charset="utf-8" />
-  <title> Survivor </title>
+      <link rel="stylesheet" type="text/css" href="styles.css" />
+      <link rel="shortcut icon" href="favicon.ico" />
+      <meta charset="utf-8" />
+      <title> Survivor </title>
+      <script src="https://d3js.org/d3.v7.min.js"></script>
+      <script src="https://d3js.org/d3.v4.min.js"></script>
+      <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
+
   </head>
 
   <body>
-      <div style="margin: 0 auto; width: 80%; background-color: white">
-          <div>
+      <div id="container" style="margin: 0 auto; width: 80%; background-color: white">
+          <div id="title-container">
               <h1 style="text-align: center">
-                  Race and Reality: Exploring Contestant Performance Before and After the CBS Diversity Promise
+                  Exploring Contestant Performance in Survivor Before and After the CBS Diversity Promise
               </h1>
           </div>
           <div style="margin: 0 auto; width: 70%; background-color: white">
-              <p style="font-size: larger; text-align: left; margin-left: 10px;">In 2020, CBS pledged that all reality casts will be represented with at least 50% people of color. These shows are a microcosm of society in that they highlight the need to strategize, form alliances, and compete in order to succeed in a competitive environment. Historically, minority contestants have been naturally subject to early elimination due to innate similar-attraction being a large reason as to why dominant alliances form. In my article, I would like to analyze whether CBS’ new policy has had its intended effect in giving people of color an equal opportunity to succeed, and consider the nuances of how gender and ethnicity may play a deeper role in a contestant’s success. </p>
+              <p style="font-size: larger; text-align: left; margin-left: 10px;">In 2020, CBS pledged that all reality casts will be represented with at least 50% people of color. In this article, we will be looking at the policy's impact on the show, Survivor. Survivor is a microcosm of society in that it highlights the need to strategize, form alliances, and manipulate one another in order to succeed in a competitive environment. Historically, minority contestants have been naturally subject to early elimination due to innate similar-attraction being a large reason as to why dominant alliances form. In my article, I would like to analyze whether CBS’ new policy has had its intended effect in giving people of color an equal opportunity to succeed, and consider the nuances of how gender and ethnicity may play a deeper role in a contestant’s success. </p>
           </div>
 
           <div style="border-top: 1px solid gray; width: 90%; margin: auto;"></div>
 
-          <div style="margin-left: 33">
-              <h2>The early days</h2>
+          <div id="inner-container" style="margin-left: 30; width: 95%">
+              <h2>Introduction</h2>
+              <p>Survivor is a reality TV show where contestants compete against each other for a million dollar prize. Every few days at "Tribal Council", the players must vote off one of the players from their tribe, eliminating them from the game.
+                  Contestants are inclined to form alliances and manipulate each other to leverage their position in the game.
+                  The game concludes with a final Tribal Council, where the remaining players must make their case to a jury comprised of their eliminated peers who decide the Sole Survivor by majority vote.</p>
+              <p>The 20-year long trend of casting predominantly White casts on Survivor has had a disproportionate effect on the outcomes of the show's winners. Not only is this an inaccurate representation of the demographics of the U.S, it is indicative of a larger issue in the media––people of color are largely underrepresented in the media that America produces, and often their stories are either misrepresented or completely absent. With the show striving for diversity, we will analyze whether or not the playing field was leveled for all contestants to have a fair opportunity. </p>
+              <h2>Data Exploration</h2>
+
+              <p>Survivor has had a long history of predominantly White casts, which has led to predominantly White winners. With our first visualization, we will explore to what extent
+              the reality show skews against the success of people of color.</p>
+
+              <h5 style="text-align: center">Visualization of all winners in different eras, by race</h5>
+              <div style="    margin: 0 auto;
+    display: block;
+    text-align: center;" id="pie"></div>
+
+              <div style='padding: 10px; text-align: center;'>
+                  <b>Demographic Representation</b><br>
+                  <div style='background-color: #40E0D0; width: 25px; height: 20px; display: inline-block; vertical-align: middle; margin-left: 4;'></div> - White<br>
+                  <div style='background-color: #FF7F50; width: 25px; height: 20px; display: inline-block; vertical-align: middle;'></div> - Black<br>
+                  <div style='background-color: #E6E6FA; width: 25px; height: 20px; display: inline-block; vertical-align: middle; margin-left: 81;'></div> - Hispanic/Latino<br>
+                  <div style='background-color: #98FF98; width: 25px; height: 20px; display: inline-block; vertical-align: middle; margin-left: 1;'></div> - Asian<br>
+              </div>
+
+
+              <div style="margin: 0 auto; display: block; text-align: center; margin-top: 12" >
+                  <button id="group1" style="background-color: #87BFFF; border-radius: 5px; padding: 8px 12px; font-weight: bold; box-shadow: 0 1px 1px rgba(0,0,0,0.1);"> Seasons 1-10</button>
+                  <button id="group2" style="background-color: #87BFFF; border-radius: 5px; padding: 8px 12px; font-weight: bold; box-shadow: 0 1px 1px rgba(0,0,0,0.1);">Seasons 11-20</button>
+                  <button id="group3" style="background-color: #87BFFF; border-radius: 5px; padding: 8px 12px; font-weight: bold; box-shadow: 0 1px 1px rgba(0,0,0,0.1);">Seasons 21-30</button>
+                  <button id="group4" style="background-color: #87BFFF; border-radius: 5px; padding: 8px 12px; font-weight: bold; box-shadow: 0 1px 1px rgba(0,0,0,0.1);">Seasons 31-40</button>
+                  <button id="group5" style="background-color: #87BFFF; border-radius: 5px; padding: 8px 12px; font-weight: bold; box-shadow: 0 1px 1px rgba(0,0,0,0.1);">Seasons 41+</button>
+              </div>
+
+              <p>
+                  As a huge Survivor fan and someone who was generally aware of the lack of diversity the show had, seeing how dominantly White the winner’s circle was in each era was still astonishing.
+                  Since the diversity initiative, there have only been three complete seasons, so this sample size is not nearly equivalent to the sizes of the other samples. However, it is still notable that of the three seasons produced after the diversity initiative, we have immediately produced two POC winners.
+                  Additionally, Season 42 saw a black woman winning Survivor for the first time in nearly 20 years, with the last black woman winning in Season 4.
+                  It is also interesting to note that seasons 13 and 14 played around with the idea of a cast that was evenly split between the four races being compared in the article.
+                  Both seasons produced a minority winner, where season 13 produced a final three where ⅔ were Asian, and season 14 produced an all-Black final three. These are additional data points that support innate-similar attraction being a large reason as to why alliances form, and why so many seasons that lack people of color are White dominated.
+              </p>
+
+              <div>
+                  <h5 style="text-align: center">Visualization of the average success of minority contestants, per season</h5>
+                  <div id="scatter" style="margin: 0 auto; display: block; text-align: center;"></div>
+                  <div style="display:flex; justify-content:space-around; margin-left: 400">
+                      <p>Filter to seasons after (and including):</p>
+                      <input type="value" id="season" min="1" max="43" step="1" value="1" style="width:40px; height: 20px; margin-right: auto; text-align: center; margin-top: 17; margin-left: 4 ">
+                  </div>
+                  <button style="margin: 0 auto; display: block; text-align: center; background-color: #87BFFF; border-radius: 5px; padding: 8px 12px; font-weight: bold; box-shadow: 0 1px 1px rgba(0,0,0,0.1);" id="reset">Restore to Default</button>
+              </div>
+
+              <div id="bars" style="margin: 0 auto; display: block; text-align: center;" ></div>
+
+              <script>
+
+                  // set the dimensions and margins of the graph
+                  var margin = {top: 10, right: 30, bottom: 20, left: 50},
+                      width = 460 - margin.left - margin.right,
+                      height = 600 - margin.top - margin.bottom;
+
+                  // append the svg object to the body of the page
+                  var svg2 = d3.select("#bars")
+                      .append("svg")
+                      .attr("width", width + margin.left + margin.right)
+                      .attr("height", height + margin.top + margin.bottom)
+                      .append("g")
+                      .attr("transform",
+                          "translate(" + margin.left + "," + margin.top + ")");
+
+                  // Parse the Data
+                  data =
+                      [{
+                          season: "1-10",
+                          non_male: 2,
+                          poc: 12,
+                          both: 8
+                      }, {
+                          season: "11-20",
+                          non_male: 2,
+                          poc: 12,
+                          both: 8
+                      }, {
+                          season: "21-30",
+                          non_male: 2,
+                          poc: 12,
+                          both: 8
+                      }, {
+                          season: "31-40",
+                          non_male: 2,
+                          poc: 12,
+                          both: 8
+                      },{
+                          season: "41+",
+                          total: 8,
+                          non_male: 6,
+                          poc: 5,
+                          both: 4
+                      }]
+
+                  // List of subgroups = header of the csv files = soil condition here
+                  var subgroups = ["non_male", "poc", "both"]
+
+                  // List of groups = species here = value of the first column called group -> I show them on the X axis
+                  var groups = d3.map(data, function(d){return(d.season)}).keys()
+
+                  // Add X axis
+                  var x = d3.scaleBand()
+                      .domain(groups)
+                      .range([0, width])
+                      .padding([0.2])
+                  svg2.append("g")
+                      .attr("transform", "translate(0," + height + ")")
+                      .call(d3.axisBottom(x).tickSize(0));
+
+                  // Add Y axis
+                  var y = d3.scaleLinear()
+                      .domain([0, 10])
+                      .range([ height, 0 ]);
+                  svg2.append("g")
+                      .call(d3.axisLeft(y));
+
+                  // Another scale for subgroup position?
+                  var xSubgroup = d3.scaleBand()
+                      .domain(subgroups)
+                      .range([0, x.bandwidth()])
+                      .padding([0.05])
+
+                  // color palette = one color per subgroup
+                  var color = d3.scaleOrdinal()
+                      .domain(subgroups)
+                      .range(['#4d91f4','#1a68e4','#8d1cc4'])
+
+                  // Show the bars
+                  svg2.append("g")
+                      .selectAll("g")
+                      // Enter in data = loop group per group
+                      .data(data)
+                      .enter()
+                      .append("g")
+                      .attr("transform", function(d) { return "translate(" + x(d.season) + ",0)"; })
+                      .selectAll("rect")
+                      .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
+                      .enter().append("rect")
+                      .attr("x", function(d) { return xSubgroup(d.key); })
+                      .attr("y", function(d) { return y(d.value); })
+                      .attr("width", xSubgroup.bandwidth())
+                      .attr("height", function(d) { return height - y(d.value); })
+                      .attr("fill", function(d) { return color(d.key); });
+
+
+              </script>
+
+
+              <script src="pie.js"></script>
+              <script src="scatter.js"></script>
+
+
           </div>
-       </div>
+
+      </div>
+
   </body>
 </html>
