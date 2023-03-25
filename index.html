@@ -21,7 +21,7 @@
               </h1>
           </div>
           <div style="margin: 0 auto; width: 70%; background-color: white">
-              <p style="font-size: larger; text-align: left; margin-left: 10px;">In 2020, CBS pledged that all reality casts will be represented with at least 50% people of color. In this article, we will be looking at the policy's impact on the show, Survivor. Survivor is a microcosm of society in that it highlights the need to strategize, form alliances, and manipulate one another in order to succeed in a competitive environment. Historically, minority contestants have been naturally subject to early elimination due to innate similar-attraction being a large reason as to why dominant alliances form. In my article, I would like to analyze whether CBS’ new policy has had its intended effect in giving people of color an equal opportunity to succeed, and consider the nuances of how gender and ethnicity may play a deeper role in a contestant’s success. </p>
+              <p style="font-size: larger; text-align: left; margin-left: 10px;">In 2020, CBS pledged that all reality casts will be represented with at least 50% people of color. In this article, we will be looking at the policy's impact on the show, Survivor. Survivor is a microcosm of society in that it highlights the need to strategize, form alliances, and manipulate one another in order to succeed in a competitive environment. Historically, POC contestants have been naturally subject to early elimination due to innate similar-attraction being a large reason as to why dominant alliances form. In my article, I would like to analyze whether CBS’ new policy has had its intended effect in giving people of color an equal opportunity to succeed, and consider the nuances of how gender and ethnicity may play a deeper role in a contestant’s success. </p>
           </div>
 
           <div style="border-top: 1px solid gray; width: 90%; margin: auto;"></div>
@@ -29,9 +29,10 @@
           <div id="inner-container" style="margin-left: 30; width: 95%">
               <h2>Introduction</h2>
               <p>Survivor is a reality TV show where contestants compete against each other for a million dollar prize. Every few days at "Tribal Council", the players must vote off one of the players from their tribe, eliminating them from the game.
-                  Contestants are inclined to form alliances and manipulate each other to leverage their position in the game.
-                  The game concludes with a final Tribal Council, where the remaining players must make their case to a jury comprised of their eliminated peers who decide the Sole Survivor by majority vote.</p>
-              <p>The 20-year long trend of casting predominantly White casts on Survivor has had a disproportionate effect on the outcomes of the show's winners. Not only is this an inaccurate representation of the demographics of the U.S, it is indicative of a larger issue in the media––people of color are largely underrepresented in the media that America produces, and often their stories are either misrepresented or completely absent. With the show striving for diversity, we will analyze whether or not the playing field was leveled for all contestants to have a fair opportunity. </p>
+                  Contestants are inclined to form alliances and manipulate each other to leverage their position in the game. The game is divided into a team portion known as the "pre-merge" where the team that loses the immunity challenge is sent to Tribal Council. Contestants then enter
+                  the "merge" where the tribes are combined into one tribe and the game becomes individual. The game concludes with a final Tribal Council, where the remaining players must make their case to a jury comprised of their eliminated peers who decide the Sole Survivor by majority vote.</p>
+              <p>The 20-year long trend of casting predominantly White casts on Survivor has had a disproportionate effect on the outcomes of the show's winners. Not only is this an inaccurate representation of the demographics of the U.S, it is indicative of a larger issue in the media––people of color are largely underrepresented in American media.
+                  With the show striving for diversity, we will analyze whether or not the playing field was leveled for all contestants to have a fair opportunity. </p>
               <h2>Data Exploration</h2>
 
               <p>Survivor has had a long history of predominantly White casts, which has led to predominantly White winners. With our first visualization, we will explore to what extent
@@ -43,7 +44,7 @@
     text-align: center;" id="pie"></div>
 
               <div style='padding: 10px; text-align: center;'>
-                  <b>Demographic Representation</b><br>
+                  <u><b>Legend:</b></u><br><br>
                   <div style='background-color: #40E0D0; width: 25px; height: 20px; display: inline-block; vertical-align: middle; margin-left: 4;'></div> - White<br>
                   <div style='background-color: #FF7F50; width: 25px; height: 20px; display: inline-block; vertical-align: middle;'></div> - Black<br>
                   <div style='background-color: #E6E6FA; width: 25px; height: 20px; display: inline-block; vertical-align: middle; margin-left: 81;'></div> - Hispanic/Latino<br>
@@ -64,11 +65,16 @@
                   Since the diversity initiative, there have only been three complete seasons, so this sample size is not nearly equivalent to the sizes of the other samples. However, it is still notable that of the three seasons produced after the diversity initiative, we have immediately produced two POC winners.
                   Additionally, Season 42 saw a black woman winning Survivor for the first time in nearly 20 years, with the last black woman winning in Season 4.
                   It is also interesting to note that seasons 13 and 14 played around with the idea of a cast that was evenly split between the four races being compared in the article.
-                  Both seasons produced a minority winner, where season 13 produced a final three where ⅔ were Asian, and season 14 produced an all-Black final three. These are additional data points that support innate-similar attraction being a large reason as to why alliances form, and why so many seasons that lack people of color are White dominated.
+                  Both seasons produced a POC winner, where season 13 produced a final three where ⅔ were Asian, and season 14 produced an all-Black final three. These are additional data points that support innate-similar attraction being a large reason as to why alliances form, and why so many seasons that lack people of color are White dominated.
+              </p>
+
+              <p>
+                  For our next visualization, we will be taking the performance of every POC contestant per season, averaging their placement, and taking the percentile over the number of castmates to create a measurement of evaluating the success of POC contestants.
+                  We will be comparing this among the ratio of POC contestants per season to evaluate to what extent the success of POC contestants is impacted by the number of POC cast.
               </p>
 
               <div>
-                  <h5 style="text-align: center">Visualization of the average success of minority contestants, per season</h5>
+                  <h5 style="text-align: center">Visualization of the average success of POC contestants, per season</h5>
                   <div id="scatter" style="margin: 0 auto; display: block; text-align: center;"></div>
                   <div style="display:flex; justify-content:space-around; margin-left: 400">
                       <p>Filter to seasons after (and including):</p>
@@ -77,113 +83,95 @@
                   <button style="margin: 0 auto; display: block; text-align: center; background-color: #87BFFF; border-radius: 5px; padding: 8px 12px; font-weight: bold; box-shadow: 0 1px 1px rgba(0,0,0,0.1);" id="reset">Restore to Default</button>
               </div>
 
-              <div id="bars" style="margin: 0 auto; display: block; text-align: center;" ></div>
+              <p>
+                  Within the visualization, we can evaluate the average success percentile above 50% as a positive performance, and below 50% as a negative performance. As seen by the chart, 8/40 of the seasons prior to the diversity policy
+                  resulted in a negative performance by POC contestants. Meanwhile, of the three seasons that took place after the diversity policy, two seasons (41 and 42) resulted in a positive performance. More notably, these
+                  two seasons had POC winners, while season 43 had a White winner. Another interesting thing to note is that seasons 13 and 14 had an almost even split of White, Black, Asian, and Hispanic/Latino contestants cast.
+                  While both seasons resulted in a POC winner, season 13 had a negative performance by POC contestants, and season 14 had a positive performance by POC contestants. Season 13 had a final three represented
+                  by two Asian contestants and one Latino contestant, while season 14 had a final three represented by three Black contestants. This is another data point that supports the idea that innate-similar attraction is a large
+                  reason as to why alliances form, and why so many seasons that lack people of color are White dominated. </p>
 
-              <script>
+              <p>
+                  As seen in this visualization, there are five seasons that have a particularly negative performance by POC contestants and fall below or at the 30th percentile. These seasons are 6, 10, 28, 33, and 37.
+                  In our final visualzation, we will be using these five seasons to find a pattern in how gender plays a role in contestant performance by analyzing several rates of elimination in the pre-merge phase.
+                  Being indicated in the pre-merge is often indicated as a poor performance, due to not making it to the individual portion of the game and generally resulting in a bottom-half placement. Because this portion
+                  of this game is revolved around team challenges, however, contestants often prioritize who they keep based on perceived strength. Oftentimes, women disproportionately do not fit into this archetype. In our
+                  final visualization, we will how gender and race may influence early exit in the game due to the nature of this stage of the game.
+              </p>
 
-                  // set the dimensions and margins of the graph
-                  var margin = {top: 10, right: 30, bottom: 20, left: 50},
-                      width = 460 - margin.left - margin.right,
-                      height = 600 - margin.top - margin.bottom;
+              <h5 style="text-align: center"> Visualization of pre-merge: comparing percentage of women eliminated against percentage of total POC women eliminated</h5>
 
-                  // append the svg object to the body of the page
-                  var svg2 = d3.select("#bars")
-                      .append("svg")
-                      .attr("width", width + margin.left + margin.right)
-                      .attr("height", height + margin.top + margin.bottom)
-                      .append("g")
-                      .attr("transform",
-                          "translate(" + margin.left + "," + margin.top + ")");
+              <div style="display: flex;">
+                  <div style='padding: 10px; margin: 0 auto; display: block; text-align: center'>
+                      <div id="bars" style="margin: 0 auto; display: block; text-align: center;" ></div>
+                  </div>
+                  <div style="margin-top: 100; margin-right: 40">
+                      <u><b>Legend:</b></u><br><br>
+                      <div style='background-color: #FF7F50; width: 25px; height: 20px; display: inline-block; vertical-align: middle;'></div> - Women eliminated in pre-merge<br>
+                      <div style='background-color: #1a68e4; width: 25px; height: 20px; display: inline-block; vertical-align: middle;'></div> - Total POC women eliminated in pre-merge<br>
+                  </div>
+              </div>
 
-                  // Parse the Data
-                  data =
-                      [{
-                          season: "1-10",
-                          non_male: 2,
-                          poc: 12,
-                          both: 8
-                      }, {
-                          season: "11-20",
-                          non_male: 2,
-                          poc: 12,
-                          both: 8
-                      }, {
-                          season: "21-30",
-                          non_male: 2,
-                          poc: 12,
-                          both: 8
-                      }, {
-                          season: "31-40",
-                          non_male: 2,
-                          poc: 12,
-                          both: 8
-                      },{
-                          season: "41+",
-                          total: 8,
-                          non_male: 6,
-                          poc: 5,
-                          both: 4
-                      }]
-
-                  // List of subgroups = header of the csv files = soil condition here
-                  var subgroups = ["non_male", "poc", "both"]
-
-                  // List of groups = species here = value of the first column called group -> I show them on the X axis
-                  var groups = d3.map(data, function(d){return(d.season)}).keys()
-
-                  // Add X axis
-                  var x = d3.scaleBand()
-                      .domain(groups)
-                      .range([0, width])
-                      .padding([0.2])
-                  svg2.append("g")
-                      .attr("transform", "translate(0," + height + ")")
-                      .call(d3.axisBottom(x).tickSize(0));
-
-                  // Add Y axis
-                  var y = d3.scaleLinear()
-                      .domain([0, 10])
-                      .range([ height, 0 ]);
-                  svg2.append("g")
-                      .call(d3.axisLeft(y));
-
-                  // Another scale for subgroup position?
-                  var xSubgroup = d3.scaleBand()
-                      .domain(subgroups)
-                      .range([0, x.bandwidth()])
-                      .padding([0.05])
-
-                  // color palette = one color per subgroup
-                  var color = d3.scaleOrdinal()
-                      .domain(subgroups)
-                      .range(['#4d91f4','#1a68e4','#8d1cc4'])
-
-                  // Show the bars
-                  svg2.append("g")
-                      .selectAll("g")
-                      // Enter in data = loop group per group
-                      .data(data)
-                      .enter()
-                      .append("g")
-                      .attr("transform", function(d) { return "translate(" + x(d.season) + ",0)"; })
-                      .selectAll("rect")
-                      .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
-                      .enter().append("rect")
-                      .attr("x", function(d) { return xSubgroup(d.key); })
-                      .attr("y", function(d) { return y(d.value); })
-                      .attr("width", xSubgroup.bandwidth())
-                      .attr("height", function(d) { return height - y(d.value); })
-                      .attr("fill", function(d) { return color(d.key); });
+<!--              <div id="bars2" style="margin: 0 auto; display: block; text-align: center;" ></div>-->
 
 
-              </script>
 
+<!--              <div style="margin: 0 auto; display: block; text-align: center; margin-top: 12" >-->
+
+<!--                  <button id="bar1" style="background-color: #87BFFF; border-radius: 5px; padding: 8px 12px; font-weight: bold; box-shadow: 0 1px 1px rgba(0,0,0,0.1);">Before policy</button>-->
+<!--                  <button id="bar2" style="background-color: #87BFFF; border-radius: 5px; padding: 8px 12px; font-weight: bold; box-shadow: 0 1px 1px rgba(0,0,0,0.1);">After policy</button>-->
+<!--&lt;!&ndash;                  <button onclick="updateChart()">Update Chart</button>&ndash;&gt;-->
+<!--              </div>-->
+
+              <p>
+                  This visualization compares two ratios. The orange bar represents the number of women eliminated in the pre-merge divided by the total number of people eliminated in the pre-merge.
+                  The blue bar represents the number of POC women eliminated in the pre-merge divided by the number of POC women cast. In a phase of the game where contestants disproportionately
+                  target women, this same trend correlates to POC women. Pre-merges that result in a high-volume of women eliminated have also resulted in every POC woman cast being eliminated,
+                  as seen in seasons 10 and 28. In season 33, 5/7 of the pre-merge boots were women, and all five were POC women.
+              </p>
+
+              <h2>Conclusion</h2>
+
+              <p>
+                  The diversity initiative has had spectacular results in leveling the playing field, with two POC female winners in Seasons 41 and 42. Yet approximately half of the POC women were eliminated before the merge in two of the three post-policy seasons. Despite this, the initiative has generally been seen as successful in increasing the success of minority contestants.
+              </p>
+
+              <p>
+                  Additionally, the diversity initiative in Survivor is a great example for other media platforms to emulate. By encouraging diversity, Survivor has been successful in increasing the success of minority contestants and providing a platform for their stories to be told. I hope for Survivor and similar reality shows to continue striving towards creating an equitable and representative society within their shows.
+              </p>
+
+
+              <h2>References</h2>
+              <li>
+                     <a href="https://www.kaggle.com/datasets/justinveiner/survivor-cbs-dataset">
+                      Dataset
+                  </a>
+
+              </li>
+              <li>
+                  <a href="https://github.com/kjschmidt913/data-visualization">
+                      Visualization reference for interactive pie chart and scatterplot
+                      </a>
+              </li>
+              <li>
+                  <a href="https://d3-graph-gallery.com/graph/barplot_grouped_basicWide.html">
+                      Visualization reference for double bar chart
+                  </a>
+              </li>
+
+
+
+
+              <script src="bar.js"></script>
+              <script src="bar2.js"></script>
 
               <script src="pie.js"></script>
               <script src="scatter.js"></script>
 
 
           </div>
+
+
 
       </div>
 

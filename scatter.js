@@ -49,11 +49,11 @@ data =
         percentage: 12.5
     }, {
         season: 13,
-        percentile: 41.58,
+        percentile: 44.35,
         percentage: 75
     }, {
         season: 14,
-        percentile: 45.63,
+        percentile: 52.63,
         percentage: 78.95
     }, {
         season: 15,
@@ -165,7 +165,7 @@ data =
         percentage: 55
     }, {
         season: 42,
-        percentile: 53.72,
+        percentile: 55.72,
         percentage: 55
     }, {
         season: 43,
@@ -279,7 +279,7 @@ var path = svg.selectAll("dot")
         div.transition()
             .duration(100)
             .style("opacity", 1);
-        div.html("Season " + d.season + "<br>Percentile of Average Minority Success: " + d.percentile.toFixed(2) + "%")
+        div.html("Season " + d.season + "<br>Percentile of Average POC Success: " + d.percentile.toFixed(2) + "%")
             .style("left", (d3.event.pageX + 10) + "px")
             .style("top", (d3.event.pageY - 15) + "px")
     })
@@ -316,7 +316,7 @@ var text = svg.selectAll("text")
         div.transition()
             .duration(100)
             .style("opacity", 1);
-            div.html("Season " + d.season + "<br>Percentile of Average Minority Success: " + d.percentile.toFixed(2) + "%")
+            div.html("Season " + d.season + "<br>Percentile of Average POC Success: " + d.percentile.toFixed(2) + "%")
             .style("left", (d3.event.pageX + 10) + "px")
             .style("top", (d3.event.pageY - 15) + "px")
 
